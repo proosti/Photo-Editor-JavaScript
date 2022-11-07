@@ -61,7 +61,7 @@ Photo-Editor-JavaScript
 </code></pre>
 
 # Screenshot Preview
-[![Demo](img/preview.png)](https://appetize.io/app/jtanmwtzbz1favhvhw5g24n7b0?device=iphone7plus&scale=50&orientation=portrait&osVersion=10.3)
+<img src="img/preview.png"></img>
 
 ## Credits
 
