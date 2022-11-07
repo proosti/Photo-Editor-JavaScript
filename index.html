@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Photo Editor</title>
+  <script defer src="./js/settings_menu.js"></script>
+  <script defer src="./js/zoom.js"></script>
+  <script defer src="./js/filters.js"></script>
+  <script defer src="./js/download.js"></script>
+  <script defer src="./js/reset_save.js"></script>
+  <script defer src="../node_modules/dom-to-image/src/dom-to-image.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="header__text">Photo Editor</h1>
+    </div>
+    <div class="main">
+      <div class="photo__block">
+        <div class="input__wrapper">
+          <input name="file" type="file" id="input__file" class="input input__file" multiple>
+          <label for="input__file" class="input__file-button">
+             <span class="input__file-icon-wrapper"><img class="input__file-icon" src="./img/add.svg" alt="Выбрать файл" width="25"></span>
+             <span class="input__file-button-text">Выберите файл</span>
+          </label>
+       </div>
+        <div class="frame" id="frame">
+          <img class="image" id="content" src="./img/default-image.jpg" alt="Загруженная фотография" style="transform: matrix(1, 0, 0, 1, 0, 0); filter: blur(0px) brightness(1) contrast(1);">
+        </div>
+      </div>
+      <div class="settings__blocks">
+
+        <div class="settings__block zoom" data-name='Zoom'>
+          <h3 class="settings__header">Zoom</h3>
+          <div class="range__block">
+            <div class="zoom__icon__minus icon__minus"></div>
+            <input class="range__input" min="1" max="4" value="0" step="any" type="range" name="range__zoom" id="zoom">
+            <div class="zoom__icon__plus icon__plus"></div>
+          </div>
+          <div class="zoom__rotates">
+            <a class="rotate__left zoom__rotates_item">Rotate left</a>
+            <a class="rotate__right zoom__rotates_item">Rotate right</a>
+            <a class="flip__horizontal zoom__rotates_item">Flip horizontal</a>
+            <a class="flip__vertical zoom__rotates_item">Flip vertical</a>
+          </div>
+        </div>
+
+        <div class="settings__block blur hidden" data-name='Blur'>
+          <h3 class="settings__header">Blur</h3>
+          <div class="range__block">
+            <div class="blur__icon__minus icon__minus"></div>
+            <input class="range__input" min="0" max="3" step="any" value="0" type="range" name="range__blur" id="blur">
+            <div class="blur__icon__plus icon__plus"></div>
+          </div>
+          <div class="blur__rotates">
+            <a class="blur__0 blur__rotates_item">0 px</a>
+            <a class="blur__1 blur__rotates_item">1 px</a>
+            <a class="blur__2 blur__rotates_item">2 px</a>
+            <a class="blur__3 blur__rotates_item">3 px</a>
+          </div>
+        </div>
+
+        <div class="settings__block brightness hidden" data-name='Brightness'>
+          <h3 class="settings__header">Brightness</h3>
+          <div class="range__block">
+            <div class="brightness__icon__minus icon__minus"></div>
+            <input class="range__input" min="0.5" max="2" value="1" step='any' type="range" name="range__brightness" id="brightness">
+            <div class="brightness__icon__plus icon__plus"></div>
+          </div>
+          <div class="brightness__rotates">
+            <a class="brightness__50 brightness__rotates_item">&nbsp;50%</a>
+            <a class="brightness__100 brightness__rotates_item">100%</a>
+            <a class="brightness__150 brightness__rotates_item">150%</a>
+            <a class="brightness__200 brightness__rotates_item">200%</a>
+          </div>
+        </div>
+
+        <div class="settings__block transit hidden" data-name='Contrast'>
+          <h3 class="settings__header">Contrast</h3>
+          <div class="range__block">
+            <div class="contrast__icon__minus icon__minus"></div>
+            <input class="range__input" min="0.8" max="1.4" step="any" value="1" type="range" name="range__contrast" id="contrast">
+            <div class="contrast__icon__plus icon__plus"></div>
+          </div>
+          <div class="contrast__rotates">
+            <a class="contrast__80 contrast__rotates_item">&nbsp;80%</a>
+            <a class="contrast__100 contrast__rotates_item">100%</a>
+            <a class="contrast__120 contrast__rotates_item">120%</a>
+            <a class="contrast__140 contrast__rotates_item">140%</a>
+          </div>
+        </div>
+
+        <ul class="settings__list">
+          <li class="settings__item active__item">
+            <a class="settings__link active__link">Zoom</a>
+          </li>
+          <li class="settings__item">
+            <a class="settings__link">Blur</a>
+          </li>
+          <li class="settings__item">
+            <a class="settings__link">Brightness</a>
+          </li>
+          <li class="settings__item">
+            <a class="settings__link">Contrast</a>
+          </li>
+        </ul>
+
+        <ul class="save__reset__list">
+          <li class="reset__button save__reset__item">
+            <a class="save__reset__link reset__link">Reset</a>
+          </li>
+          <li class="save__button save__reset__item">
+            <a id="get_images" class="save__reset__link save__link">Save</a>
+          </li>
+          <li class="hidden download__button save__reset__item">
+            <a id="download" download class="save__reset__link download__link">Download</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
